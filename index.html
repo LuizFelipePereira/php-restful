@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8" />
+
+<title>Guest List</title>
+
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster" />
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css" />
+<link rel="stylesheet" href="assets/css/main.css" />
+
+</head>
+<body>
+
+<header>
+	<h1>Guest List</h1>
+</header>
+
+<form class="pure-form pure-form-aligned">
+	<fieldset>
+		<div class="pure-control-group">
+			<label for="name">Name</label>
+			<input id="name" type="text" placeholder="Username" required>
+		</div>
+
+		<div class="pure-control-group">
+			<label for="email">Email Address</label>
+			<input id="email" type="email" placeholder="Email Address" required>
+		</div>
+		
+		<div class="pure-controls">
+			<button type="submit" class="pure-button pure-button-primary">Submit</button>
+		</div>
+	</fieldset>
+</form>
+
+<section id="guestList">
+	<dl>
+		<dt class="photo"><img src="http://www.gravatar.com/avatar/aab95d5689ea7c531ea98e9669f87948" /></dt>
+		<dd class="name">Edy Segura <img src="assets/images/delete.gif" /></dd>
+		<dd class="email">edysegura@gmail.com</dd>
+	</dl>
+</section>
+
+</body>
+</html>
