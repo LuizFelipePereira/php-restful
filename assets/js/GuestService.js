@@ -11,9 +11,15 @@ var GuestService = {
 		//TODO to implemented
 	},
 	
-	getList: function() {
-		GuestService.retrieveFromLocalStorage();
-		return GuestService.list;
+	getList: function(callback) {
+		$.ajax({
+			type: 'GET',
+			url: 'api/guests',
+			dataType: 'json',
+			success: function(list) {
+				callback(list);
+			}
+		});
 	},
 	
 	saveToLocalStorage: function () {

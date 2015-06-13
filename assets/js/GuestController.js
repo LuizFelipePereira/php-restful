@@ -24,9 +24,10 @@ var GuestController = {
 	},
 	
 	showList: function () {
-		var list = GuestService.getList();
-		list.forEach(function(guest) {
-			GuestController.addToHTML(guest);
+		GuestService.getList(function(list) {
+			list.forEach(function(guest) {
+				GuestController.addToHTML(guest);
+			});	
 		});
 	},
 	
