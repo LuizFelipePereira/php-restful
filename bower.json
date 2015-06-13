@@ -1,0 +1,29 @@
+{
+  "name": "guestlist",
+  "version": "0.1.0",
+  "homepage": "https://github.com/edysegura/restful-with-php",
+  "description": "An example of RESTful API with PHP",
+  "main": "index.html",
+  "keywords": [
+    "rest",
+    "ajax",
+    "php",
+    "slim"
+  ],
+  "authors": [
+    "Edy Segura"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "pure": "~0.6.0"
+  }
+}
