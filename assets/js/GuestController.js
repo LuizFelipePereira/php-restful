@@ -12,18 +12,6 @@ var GuestController = {
 			//it is to avoid form submition
 			event.preventDefault();
 		});
-		GuestController.setFocus();
-	},
-	
-	setFocus: function() {
-		var inputName = document.getElementById('name');
-		inputName.focus();
-	},
-	
-	clearForm: function () {
-		var form = document.querySelector('form');
-		form.reset();
-		GuestController.setFocus();
 	},
 	
 	addGuest: function(form) {
@@ -31,34 +19,14 @@ var GuestController = {
 			name: form.name.value,
 			email: form.email.value
 		};
-		
-		GuestService.add(guest, function(addedGuest) {
-			if(addedGuest) {
-				GuestController.addToHTML(addedGuest);
-				GuestController.clearForm();
-			}
-		});
-	},
-	
-	deleteGuest: function (imgDelete) {
-		var 
-			guestName = imgDelete.dataset.guestname,
-			guestId = imgDelete.dataset.guestid;
-		
-		if(confirm('Are you sure you want to remove ' + guestName + '?')) {
-			GuestService.remove(guestId, function (isDelete) {
-				if(isDelete) {
-					$(imgDelete).parents('dl').remove();
-				}
-			});
-		}
+		GuestService.add(guest);
+		GuestController.addToHTML(guest);
 	},
 	
 	showList: function () {
-		GuestService.getList(function(guests) {
-			guests.forEach(function(guest) {
-				GuestController.addToHTML(guest);
-			});
+		var list = GuestService.getList();
+		list.forEach(function(guest) {
+			GuestController.addToHTML(guest);
 		});
 	},
 	
@@ -68,10 +36,7 @@ var GuestController = {
 			dl = document.createElement('dl'),
 			dt = GuestController.createDT(guest),
 			ddName = GuestController.createDD(guest.name, 'name'),
-			ddEmail = GuestController.createDD(guest.email, 'email'),
-			imgDelete = GuestController.createDelete(guest);
-
-		ddName.appendChild(imgDelete);
+			ddEmail = GuestController.createDD(guest.email, 'email');
 		
 		dl.appendChild(dt);
 		dl.appendChild(ddName);
@@ -89,7 +54,7 @@ var GuestController = {
 	createDT: function(guest) {
 		var 
 			dt = document.createElement('dt'),
-			img = GuestController.createImage('https://www.gravatar.com/avatar/hash-md5');
+			img = GuestController.createImage('http://www.gravatar.com/avatar/hash-md5');
 		
 		dt.appendChild(img);
 		dt.className = "photo";
@@ -104,18 +69,6 @@ var GuestController = {
 		dd.className = className;
 		
 		return dd;
-	},
-	
-	createDelete: function(guest) {
-		var imgDelete = GuestController.createImage('assets/images/delete.gif');
-		
-		imgDelete.setAttribute('data-guestid', guest.id);
-		imgDelete.setAttribute('data-guestname', guest.name);
-		imgDelete.addEventListener('click', function() {
-			GuestController.deleteGuest(this);
-		});
-		
-		return imgDelete;
 	}
 
 };
